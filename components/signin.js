@@ -1,6 +1,6 @@
 import styles from '../styles/SignIn.module.css';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from '../reducers/users';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -25,6 +25,7 @@ const router = useRouter();
 					setSignInUsername('');
 					setSignInPassword('');
 					setConnectionError(false);
+					console.log('guess who logged ' , data.name)
                     router.push('/tweets')
 				} else {
 					setConnectionError(true);//si l'utilisateur n'existe pas un message conditionnel apparait en return

@@ -4,14 +4,6 @@ const initialState = {
   value: [],
 };
 
-//action.payload a renvoyer : {
-//    name : String, 
-//    username : String, 
-//    tweet : String, 
-//    date : Date,
-//    hashtag : String
-// }
-
 export const tweetSlice = createSlice({
   name: 'tweets',
   initialState,

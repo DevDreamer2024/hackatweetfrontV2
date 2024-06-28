@@ -14,6 +14,7 @@ function LeftSection() {
     const router = useRouter()
     const dispatch = useDispatch()
     const users = useSelector((state) => state.users.value);
+    console.log('current user:', users)
     const clickLogout = () => {
         dispatch(logout())
         setTimeout(function(){

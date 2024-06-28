@@ -19,7 +19,8 @@ function RightSection(){
 
 
     const tweets = useSelector((state) => state.tweets.value);
-    const hashtags = tweets.map(e => e.hashtag.map(e => e.toLowerCase())).flat()
+    console.log("voici tweets l22 rightsection ",tweets , "voici hashtag l23 rightsection ", hashtagToSave)
+    const hashtags = tweets?.map(e => e.hashtag?.map(e => e.toLowerCase()) || []).flat();
     const uHashtags = [...new Set(hashtags)].filter(e => e !== "")
 
     const leftCollContent = uHashtags.map(e => {
