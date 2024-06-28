@@ -61,11 +61,11 @@ function Hashtag(props) {
         <div className={styles.homeBody}>
             <div className={styles.leftContainer}>
                 <div className={styles.logoContainer}>
-                    <Image className="logo" src="/logoTwitter.png" alt="Logo" width={80} height={80} />
+                    <Image className="logo" src="/twiter-inverse.png" alt="Logo" width={80} height={80} />
                 </div>
                 <div className={styles.profileAndButtonContainer}>
                     <div className={styles.userConnection}>
-                        <img className={styles.profileImg} src="/eggProfile.jpg" alt="img" />
+                        <img className={styles.profileImg} src="/egg.jpg" alt="img" />
 
                         <div className={styles.profileNames}><p className={styles.firstname}>{firstname}</p>
                             <p className={styles.username}>@{username}</p>

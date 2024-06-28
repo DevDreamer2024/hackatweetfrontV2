@@ -57,7 +57,7 @@ function Tweets() {
               type="text-area"
               onChange={(e) => setTweetToPost(e.target.value)}
               value={tweetToPost}
-              placeholder="Post something and try to be nice and respectfull"
+              placeholder="Post something"
             />
             <div className={styles.posterBottom}>
               <span className={styles.stringCounter}>

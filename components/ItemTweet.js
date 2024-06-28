@@ -1,6 +1,6 @@
 import styles from "../styles/Tweets.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import Image from "next/image";
 import { faHeart, faTrash} from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from "react-redux";
 import{ removeTweets} from '../reducers/tweets';
@@ -42,14 +42,41 @@ function ItemTweet(props) {
         coeurColor = { 'color': 'red' };
     }    
     
+    const dataFormatted = (date) => {
 
+        const tweetDate = new Date(date);
+    
+        const now = new Date();
+        const diff = now - tweetDate;
+        const seconds = Math.floor(diff / 1000);
+        const minutes = Math.floor(seconds / 60);
+        const hours = Math.floor(minutes / 60);
+        const days = Math.floor(hours / 24);
+    
+        if (days > 0) {
+          return `${days} days ago`;
+        } else if (hours > 0) {
+          return `${hours} hours ago`;
+        } else if (minutes > 0) {
+          return `${minutes} minutes ago`;
+        } else {
+          return `${seconds} seconds ago`;
+        }
+      };
+    
     return (
         <div className={styles.tweetItem}>
             <div className={styles.tweetHead}>
-                <div className="avatar"></div>
+                <div className="avatar"><Image
+          src="/images/egg.jpg"
+          alt="Profile"
+          width={70}
+          height={70}
+          className={styles.profileImage}
+        /></div>
                 <p className={styles.name}>{props.name}</p>
                 <span className="username">@{props.username}</span>
-                <span>{props.date}</span>
+                <span>{dataFormatted(props.date)}</span>
             </div>
             <div className={styles.tweetBody}>
                 <p>{props.tweet}</p>

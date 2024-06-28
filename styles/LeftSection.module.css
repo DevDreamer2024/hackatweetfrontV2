@@ -4,7 +4,7 @@
     justify-content: space-between;
     width: 100%;
     height: 100vh;
-    align-items: left;
+    align-items: center;
     padding: 20px;
 }
 
@@ -26,5 +26,7 @@
     margin-bottom: 0px;
 }
 
-
+.currentUser img {
+  border-radius: 50%;
+}
 
