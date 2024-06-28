@@ -1,0 +1,108 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #151d2d;
+}
+@font-face {
+  font-family: 'mont-heavy';
+  src: url(../public/Mont-HeavyDEMO.otf);
+}
+@font-face {
+  font-family: 'verdana';
+  src: url(../public/verdana.ttf);
+}
+@font-face {
+  font-family: 'verdana-bold';
+  src: url(../public/verdana-bold.ttf);
+}
+@font-face {
+  font-family: 'verdana_bold-italic';
+  src: url(../public/verdana-bold-italic.ttf);
+}
+* {
+  box-sizing: border-box;
+}
+
+p{
+  color: white;
+  font-family: 'mont-heavy';
+}
+h2{
+  color: white;
+  font-family: 'mont-heavy';
+}
+h3{
+  color: white;
+  font-weight: bolder;
+  margin: 0;
+}
+h3:hover{
+  cursor: pointer;
+}
+
+.avatar{
+  background-color: #00FFFF;
+  width: 40px;
+  height: 40px;
+  clip-path: circle();
+  margin: 5px;
+}
+.username{
+  color: #56667a;
+  font-family: sans-serif;
+  font-weight: 300;
+  margin-top: 0px;
+}
+.btnLogout{
+  color: white;
+  cursor: pointer;
+  border: 1px solid  white;
+  font-weight: bold;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 20px;
+  margin-left: 20px;
+}
+.btnLogout:hover{
+background-color: white;
+color: #151d2d;
+transition: 0.5s ease-in-out;
+}
+
+
+
+
+
+.ant-modal .ant-modal-content {
+  background-color: #1a1a1a;
+  border-radius: 20px;
+  border: none;
+}
+
+.ant-modal .ant-modal-header {
+  background-color: #1a1a1a;
+  border-bottom: none;
+  padding: 0;
+}
+
+.ant-modal .anticon {
+  color: #ffffff;
+}
+
+.ant-modal .ant-modal-title {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.customModal .ant-modal .ant-modal-body {
+  background-color: #1a1a1a;
+  padding: 20px;
+}
+
+.customModal .ant-modal .ant-modal-footer {
+  display: none;
+}

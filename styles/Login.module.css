@@ -1,0 +1,34 @@
+
+.container {
+    display: flex;
+    height: 100vh; 
+    width: 100%;
+  }
+  
+  .columnLeft, .columnRight {
+    flex: 1;
+  }
+  
+  .columnLeft {
+    position: relative; 
+  }
+  .columnRight {
+    position : relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .containerLogin h1, .containerLogin h2, .containerLogin p   {
+      font-family: 'Mont-Heavy', sans-serif;
+  }
+  
+  .columnRightContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  

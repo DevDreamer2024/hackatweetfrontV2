@@ -1,0 +1,49 @@
+.registerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .registerSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1a1a1a; 
+    padding: 20px;
+    border-radius: 20px; 
+  }
+  
+  .registerSection p {
+    color: #ffffff;
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    margin-bottom: 20px; 
+  }
+  
+  .registerSection input {
+    background-color: #333333; 
+    border: none; 
+    color: #ffffff; 
+    border-radius: 10px; 
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%; 
+  }
+  
+  .registerSection button {
+    background-color: #ffffff; 
+    color: #1a1a1a; 
+    border-radius: 20px; 
+    border: none; 
+    padding: 10px 20px; 
+    font-size: 1rem; 
+    font-weight: bold; 
+    cursor: pointer;
+    width: 100%; 
+  }
+  
+  .registerSection button:hover, .registerSection button:focus {
+    background-color: #cccccc; 
+    color: #1a1a1a;
+  }
+  
