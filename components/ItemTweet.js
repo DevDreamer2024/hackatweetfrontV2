@@ -6,12 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import{ removeTweets} from '../reducers/tweets';
 import { useState } from "react";
 
+
 function ItemTweet(props) {
     
     const dispatch= useDispatch()
     const currentUser = useSelector((state) => state.users.value);
     const [likes, setLikes] = useState(props.likes);
-    const [isLiked, setIsLiked] = useState(props.likedBy.includes(currentUser.token));
+    const [isLiked, setIsLiked] = useState(false);
     const userToken = currentUser.token;
     //delete
     const deleteTweet =() => {
@@ -41,8 +42,7 @@ function ItemTweet(props) {
         })
           .then((res) => res.json())
           .then((data) => {
-            
-            setIsLiked(!isLiked);
+            setIsLiked(!isLiked)
             setLikes(data.likes);
             console.log(isLiked);
           })

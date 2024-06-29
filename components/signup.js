@@ -21,7 +21,7 @@ function SignUp() {
       headers: {'Content-Type' : 'application/json'},
       body : JSON.stringify({
         username : signUpUsername,
-        firstname : signUpname,
+        name : signUpname,
         password : signUpPassword
       })
     }).then(response => response.json())

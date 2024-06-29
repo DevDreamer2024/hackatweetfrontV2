@@ -10,8 +10,9 @@ function Tweets() {
   const dispatch = useDispatch();
   const [tweetToPost, setTweetToPost] = useState("");
   const currentUser = useSelector((state) => state.users.value);
-
+  const newTweet = useSelector((state) => state.tweets.value);
   useEffect(() => {
+    const fetchTweets = () => {
     fetch("http://localhost:3000/tweets", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -19,31 +20,41 @@ function Tweets() {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          dispatch(initialiseTweets(data.data.reverse()));
+          dispatch(initialiseTweets(data.data.reverse())); // Initialise les tweets dans le store Redux en inversant l'ordre
         }
       });
-  }, []);
+    };
+      fetchTweets();
+      const interval = setInterval(fetchTweets, 1000); // Rafraîchit les tweets toutes les 1 secondes
+      return () => clearInterval(interval);
+  }, [dispatch, newTweet]);
 
-  const sentNewTweet = () => {
-    fetch("http://localhost:3000/tweets/newtweet", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: currentUser.name,
-        username: currentUser.username,
-        tweet: tweetToPost,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch(addTweets(data.data));
-      })
-      .then(setTweetToPost(""));
+const sentNewTweet = () => {
+  // Prépare le corps de la requête avec les informations du tweet
+  const requestBody = {
+      name: currentUser.name,
+      username: currentUser.username,
+      tweet: tweetToPost,
   };
 
-  const tweets = useSelector((state) => state.tweets.value);
+  fetch("http://localhost:3000/tweets/newtweet", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestBody),
+  })
+  .then((response) => response.json())
+  .then((data) => {
+      // Réinitialise l'état du tweet à poster avant d'ajouter le nouveau tweet au store Redux
+      setTweetToPost("");
+      // Ajoute le nouveau tweet au store Redux
+      dispatch(addTweets(data.data));
+  })
+  .catch((error) => console.error('Erreur lors de l\'envoi du tweet:', error));
+};
 
-  const itemTweet = tweets.map((data, i) => <ItemTweet key={i} {...data} />);
+  const tweets = useSelector((state) => state.tweets.value);  // Sélectionne les tweets depuis le store Redux
+
+  const itemTweet = tweets.map((data, i) => <ItemTweet key={i} {...data} />); // Crée un composant ItemTweet pour chaque tweet
   return (
     <div className={styles.mainSection}>
       <div className={styles.leftSection}>
@@ -55,7 +66,7 @@ function Tweets() {
           <div className={styles.tweetPostContainer}>
             <input
               type="text-area"
-              onChange={(e) => setTweetToPost(e.target.value)}
+              onChange={(e) => setTweetToPost(e.target.value)} // Met à jour l'état avec le contenu du tweet
               value={tweetToPost}
               placeholder="Post something"
             />

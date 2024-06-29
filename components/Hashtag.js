@@ -2,7 +2,7 @@ import styles from '../styles/Hashtag.module.css';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Tweet from './Tweet';
-import Image from 'next/Image';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 
@@ -11,7 +11,11 @@ function Hashtag(props) {
 
 
     const dispatch = useDispatch();
+    
+   
+   // Récupère l'utilisateur actuel depuis l'état global Redux
     const user = useSelector((state) => state.user.value);
+    // Déclare les états locaux pour le prénom, le nom d'utilisateur, le message, l'ajout de tweet, la longueur du message et les tweets
     const [firstname, setFirstName] = useState('');
     const [username, setUserName] = useState(user.username);
     const [message, setMessage] = useState('');
@@ -22,7 +26,7 @@ function Hashtag(props) {
 
     const router = useRouter();
 
-
+ // Premier useEffect pour récupérer le prénom de l'utilisateur connecté
     useEffect(() => {
         fetch(`http://localhost:3000/users/connected/${username}`)
             .then(response => response.json())
@@ -31,7 +35,7 @@ function Hashtag(props) {
             })
 
     }, [])
-
+ // Deuxième useEffect pour récupérer les tweets chaque fois que isTweetAdded change
     useEffect(() => {
         fetch('http://localhost:3000/tweets/')
             .then(response => response.json())
@@ -39,15 +43,15 @@ function Hashtag(props) {
                 data.result && setTweets([...data.tweets])
             })
     }, [isTweetAdded])
-
+ // Mappe chaque tweet à un composant Tweet pour l'affichage
     const tweetElements = tweets.map((e, i) => {
 
         return <Tweet key={i} {...e} currentDate />
     })
-
+  // Déclare l'état local pour le hashtag
     const [hashtag, setHashtag] = useState('#');
 
-
+    // Fonction pour gérer la recherche de tendance basée sur le hashtag
     const searchTrend = (e) => {
         const hashtagLength = e.target.value.length;
         if (hashtagLength < 2) {
@@ -56,7 +60,7 @@ function Hashtag(props) {
             setHashtag(e.target.value)
         }
     }
-
+ // Rendu du composant Hashtag
     return (
         <div className={styles.homeBody}>
             <div className={styles.leftContainer}>
